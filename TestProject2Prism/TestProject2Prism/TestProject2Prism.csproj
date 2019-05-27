@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.1.0.48" />
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.1.0.431" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Behaviors\Behaviors.csproj" />
+    <ProjectReference Include="..\..\ListRatesMoney\ListRatesMoney.csproj" />
+    <ProjectReference Include="..\..\MoneyCharts\MoneyCharts.csproj" />
+    <ProjectReference Include="..\..\MoneyRatesGraphics\MoneyRatesGraphics.csproj" />
+    <ProjectReference Include="..\..\TestProject2Prism.Core\TestProject2Prism.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\ButtonsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

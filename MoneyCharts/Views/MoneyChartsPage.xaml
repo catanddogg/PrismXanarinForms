@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MoneyCharts.Views.MoneyChartsPage"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             Title="{Binding Title}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Picker Grid.Row="0" ItemsSource="{Binding MoneyNames}" SelectedItem="{Binding SelectedFirstMoney}"/>
+        <Picker Grid.Row="0" Grid.Column="1" ItemsSource="{Binding MoneyNames}" SelectedItem="{Binding SelectedSecondMoney}"/>
+        <Label Grid.Row="1" Text ="Start Date"/>
+        <Label Grid.Row="3" Text="End Date"/>
+        <DatePicker  Grid.Row="2" Grid.ColumnSpan="2" Format="D" Date="{Binding SelectedFirstDate}" MinimumDate="6/01/2000"/>
+        <DatePicker  Grid.Row="4"  Grid.ColumnSpan="2" Format="D" Date="{Binding SelectedSecondDate}" MinimumDate="6/01/2000"/>
+        <Button Grid.Row="5" Grid.ColumnSpan="2" Command="{Binding GetInfoCommand}" Text="Get Info" />
+        <chart:SfChart Grid.Row="6" Grid.ColumnSpan="2">
+            <chart:SfChart.PrimaryAxis>
+                <chart:CategoryAxis/>
+            </chart:SfChart.PrimaryAxis>
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis/>
+            </chart:SfChart.SecondaryAxis>
+            <chart:SfChart.Legend >
+                <chart:ChartLegend x:Name="chartLegend" DockPosition="Bottom" ToggleSeriesVisibility="True" IconWidth="14" IconHeight="14">
+                </chart:ChartLegend>
+            </chart:SfChart.Legend>
+            <chart:LineSeries ItemsSource="{Binding ListValueMoney}" XBindingPath="Name" YBindingPath="Value" LegendIcon="Circle" Label="{Binding SelectedMoneys}">
+                <chart:LineSeries.DataMarker>
+                    <chart:ChartDataMarker MarkerWidth="5" MarkerHeight="5" ShowLabel="false" ShowMarker="true" MarkerBorderColor="#00bdae" MarkerBorderWidth="2" MarkerColor="White">
+                    </chart:ChartDataMarker>
+                </chart:LineSeries.DataMarker>
+            </chart:LineSeries>
+        </chart:SfChart>
+    </Grid>
+</ContentPage>

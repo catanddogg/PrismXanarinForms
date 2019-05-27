@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Behaviors.Views.BehaviorsPage"
+             Title="{Binding Title}"
+             xmlns:behaviors="clr-namespace:TestProject2Prism.Behaviors"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        <Label
+            Grid.Column="1"
+            HorizontalTextAlignment="Center"
+            FontSize="25"
+            Grid.Row="0"
+            TextColor="Black"
+            Text="Hello" >
+            <Label.Behaviors>
+                <behaviors:ViewTappedButtonBehavior AnimationType="Fade"/>
+            </Label.Behaviors>
+        </Label>
+        <Image
+            Grid.Column="1"
+            Grid.Row="1"
+            Source="test_icons.png"
+            WidthRequest="40"
+            HeightRequest="40">
+            <Image.Behaviors>
+                <behaviors:ViewTappedButtonBehavior AnimationType="Scale"/>
+            </Image.Behaviors>
+        </Image>
+        <Button  Grid.Column="1"
+                 Grid.Row="2"
+                 TextColor="White"
+                 HorizontalOptions="FillAndExpand"
+                 BackgroundColor="Red"
+                 Text="Login">
+            <Button.Behaviors>
+                <behaviors:ViewTappedButtonBehavior AnimationType="Scale"/>
+            </Button.Behaviors>
+        </Button>
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     Grid.Row="3"
+                     Grid.Column="1"
+                     Orientation="Horizontal"
+                     BackgroundColor="LimeGreen"
+                     Padding="20">
+            <Label Text="Testing Stacklayout"
+                       TextColor="White"/>
+
+            <Label Text="TWO Labels"
+                       TextColor="White"/>
+            <StackLayout.Behaviors>
+                <behaviors:ViewTappedButtonBehavior AnimationType="Rotate"/>
+            </StackLayout.Behaviors>
+        </StackLayout>
+        <StackLayout Grid.Column="1" Grid.Row="4" HorizontalOptions="CenterAndExpand">
+            <Label Text="Discussion"
+                       TextColor="Black"/>
+            <StackLayout.Behaviors>
+                <behaviors:ViewTappedButtonBehavior AnimationType="FlipVertical"/>
+            </StackLayout.Behaviors>
+        </StackLayout>
+        <Switch Grid.Column="1" Grid.Row="5">
+            <Switch.Behaviors>
+                <behaviors:ViewTappedButtonBehavior AnimationType="Shake"/>
+            </Switch.Behaviors>
+        </Switch>
+        <BoxView     Grid.Row="6" 
+                     Grid.Column="1"
+                     Color="RoyalBlue"
+                     WidthRequest="50"
+                     HeightRequest="50">
+            <BoxView.Behaviors>
+                <behaviors:ViewTappedButtonBehavior  AnimationType="FlipHorizontal"/>
+            </BoxView.Behaviors>
+        </BoxView>
+    </Grid>
+</ContentPage>
